@@ -1,6 +1,30 @@
 # Welcome to Remix!
 
+This is the result of following the [Jokes App Tutorial](https://remix.run/docs/en/v1/tutorials/jokes) over at remix.run.
+
 - [Remix Docs](https://remix.run/docs)
+- [Jokes App Tutorial](https://remix.run/docs/en/v1/tutorials/jokes)
+
+## My notes
+
+I made some notes during this tutorial:
+
+- Outlet is used to load a sub route. Basically nesting views/partials
+- Use the dollar sign for parameterized routes (e.g. `/articles/$article.tsx`)
+- Scope CSS to routes specific, load with `Links`
+- Add `.server.` to a filename to ensure it's only ran on the server. Remix does a good job, but just to be safe
+- To load data, export a `loader` function and access it through the `useLoader` hook
+    - The `loader` function runs on the server, so here you can filter out and set just the date you need to the client
+    - The `loader` function and `useLoader` hooks run in totally different environments
+- Actions can be used to handle a form post for instance. Export an `action` function that will use native form post handling
+- Export an `ErrorBoundary` function per route/partial and it can be displayed in the `app/root.tsx` with another `ErrorBoundary` function. Cool thing is it is scoped to a specific part of the application
+- You can throw errors with a Request and handle it with a `CatchBoundry`
+    - it's all contextual, so the rest of the app continues to function just as well.
+- Just as the `Links` export, you can add `Meta` to the `root.tsx` and export a `MetaFunction` in the component you want to add meta tags for SEO
+- You can make special resource routes to serve resources like an SVG, RSS or more. Create a route with this syntax for it to work `/articles[.]rss.tsx`
+    - You could even make a JSON API route this way
+- If you actually want some clientside JS, you have to add the `Scripts` component. I build the entire application without any clientside JS so far, which is awesome!
+- `prefetch="intent"` can be added to links to prefetch
 
 ## Development
 
